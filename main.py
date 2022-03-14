@@ -6,19 +6,17 @@ Proyecto Python y MySQL
 - si elegimos "login", identificara al usuario y nos preguntara
 - crear nota, mostrar nota, borrarlas
 """
+from usuarios import acciones
 print("""
 Acciones disponibles:
     - registro
     - login
 """)
+crear = acciones.Acciones()
 accion = input("¿Que quieres hacer ?\n")
 if accion == "registro":
-    print("\nOK, Vamos a registrarte en el sistema...\n")
-    nombre = input("Introduce tu nombre: ")
-    apellido = input("Tus apellidos: ")
-    email = input("Email: ")
-    password = input("Contraseña: ")
+    crear.registro()
+    
 elif accion == "login":
-    print("Vale!! Identificate en el sistema....\n")
-    email = input("Email: ")
-    password = input("Contraseña: ")
+    crear.login()
+    
