@@ -13,6 +13,7 @@ Acciones disponibles:
     - login
 """)
 crear = acciones.Acciones()
+
 accion = input("¿Que quieres hacer ?\n")
 if accion == "registro":
     crear.registro()
