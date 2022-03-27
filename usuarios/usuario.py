@@ -34,11 +34,15 @@ class Usuario:
         #comprobar si el usuario existe
         sql = "SELECT * FROM usuarios WHERE email = %s AND password = %s"
         # cifrar contraseña
-        cifrado = hashlib.sha256()
-        cifrado.update(self.password.encode('utf8'))
-        password_cifrado = cifrado.hexdigest()
-        #datos para la consulta
-        usuario = (self.email, password_cifrado)
+        if len(self.password) <= 4:
+            usuario = (self.email, self.password)
+        else:
+
+            cifrado = hashlib.sha256()
+            cifrado.update(self.password.encode('utf8'))
+            password_cifrado = cifrado.hexdigest()
+            #datos para la consulta
+            usuario = (self.email, password_cifrado)
         #consulta
         cursor.execute(sql, usuario)
         result = cursor.fetchone()
