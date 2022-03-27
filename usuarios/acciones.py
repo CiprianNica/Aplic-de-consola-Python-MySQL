@@ -1,9 +1,9 @@
 import usuarios.usuario as model
+import notas.acciones
 
 class Acciones:
 
     def registro(self):
-
         print("\nOK, Vamos a registrarte en el sistema...\n")
         nombre = input("Introduce tu nombre: ")
         apellidos = input("Tus apellidos: ")
@@ -16,13 +16,11 @@ class Acciones:
         if registro[0] >= 1:
             print ("perfecto")
         else:
-
             print("No se ha registrado !!")
 
     def login(self):
         print("Vale!! Identificate en el sistema....\n")
         try:
-
             email = input("Email: ")
             password = input("Contraseña: ")
 
@@ -36,7 +34,8 @@ class Acciones:
             print(type(e))
             print(type(e).__name__)
             print("Email o password incorrectos. Intentalo mas tarde.")
-    def proximasAcciones(self, user):
+
+    def proximasAcciones(self, registro):
         print("""
         Acciones disponibles:
             - crear notas (crear)
@@ -45,16 +44,22 @@ class Acciones:
             - salir (salir)
         """)
         accion = input("Que quieres hacer?: ")
+        hazEl = notas.acciones.Acciones()
+
         if accion == "crear":
             print("Vamos a crear")
-            self.proximasAcciones(user)
+            hazEl.crear(registro)
+            self.proximasAcciones(registro)
+
         elif accion == "mostrar":
             print("Vamos a mostrar.")
-            self.proximasAcciones(user)
+            self.proximasAcciones(registro)
+
         elif accion == "eliminar":
             print("Vamos a eliminar")
-            self.proximasAcciones(user)
+            self.proximasAcciones(registro)
+            
         elif accion == "salir":
-            print(f"Ok {user[1]}, hasta pronto !!")
+            print(f"Ok {registro[1]}, hasta pronto !!")
             exit()
         

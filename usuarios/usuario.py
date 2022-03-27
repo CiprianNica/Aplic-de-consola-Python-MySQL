@@ -37,7 +37,6 @@ class Usuario:
         if len(self.password) <= 4:
             usuario = (self.email, self.password)
         else:
-
             cifrado = hashlib.sha256()
             cifrado.update(self.password.encode('utf8'))
             password_cifrado = cifrado.hexdigest()
