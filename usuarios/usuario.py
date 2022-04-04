@@ -42,7 +42,7 @@ class Usuario:
             password_cifrado = cifrado.hexdigest()
             #datos para la consulta
             usuario = (self.email, password_cifrado)
-        #consulta
+            #consulta
         cursor.execute(sql, usuario)
         result = cursor.fetchone()
         return result
